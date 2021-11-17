@@ -1,0 +1,42 @@
+/******************************************************************************
+
+                             CaeserCipher
+
+*******************************************************************************/
+
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+int main()
+{
+    char plaintext[50],ciphertext[50];
+    int key_len,len;
+    cout<<"Text Length:";
+    cin>>len;
+    cout<<"Enter the Plain text:";
+    for(int i=0;i<len;i++){
+        cin>>plaintext[i];
+    }
+    
+    cout<<"\nEnter key length:";
+    cin>>key_len;
+    
+    for(int i=0;i<len;i++){
+        
+        if(int(plaintext[i])>96){
+        ciphertext[i]=( int((plaintext[i]+key_len-int('a'))%26)+int('a') );    //lowercase lettrs
+        }
+        else{
+           ciphertext[i]=( int((plaintext[i]+key_len-int('A'))%26)+int('A') ); //uppercase letters
+        }
+    }
+    
+    cout<<"\nCipherText is:";
+    for(int i=0;i<len;i++){
+        cout<<char(ciphertext[i]);
+    }
+
+    return 0;
+}
