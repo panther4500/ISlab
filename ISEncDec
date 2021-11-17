@@ -1,0 +1,61 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+int main()
+{
+    char plaintext[50],ciphertext[50],decryptedtext[50];
+    int key_len,len;
+    cout<<"Text Length:";
+    cin>>len;
+    cout<<"Enter the Plain text:";
+    for(int i=0;i<len;i++){
+        cin>>plaintext[i];
+    }
+    
+    cout<<"\nEnter key length:";
+    cin>>key_len;
+    
+    for(int i=0;i<len;i++){                             //encryption
+        
+        if(int(plaintext[i])>96){
+        ciphertext[i]=( int((plaintext[i]+key_len-int('a'))%26)+int('a') );    //lowercase lettrs
+        }
+        else{
+           ciphertext[i]=( int((plaintext[i]+key_len-int('A'))%26)+int('A') ); //uppercase letters
+        }
+    }
+    
+    for(int i=0;i<len;i++){                             //decryption
+        
+        if(int(ciphertext[i])>96){
+        decryptedtext[i]= int(ciphertext[i]-key_len) ;
+        }
+        else{
+           decryptedtext[i]=int(ciphertext[i]-key_len) ;
+        }
+    }
+    
+    
+    cout<<"\nCipher Text is:";
+    for(int i=0;i<len;i++){
+        cout<<char(ciphertext[i]);
+    }
+    
+    cout<<"\nDecrypted Text is:";
+    for(int i=0;i<len;i++){
+        cout<<char(decryptedtext[i]);
+    }
+
+
+    return 0;
+}
